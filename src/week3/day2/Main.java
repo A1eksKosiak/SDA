@@ -16,8 +16,13 @@ public class Main {
         int input = scanner.nextInt();
 
         Queue queue = new Queue(input);
-
-
+        queue.printQueue();
+        for (int i = 0; i < input * 2 + 1; i++) {
+            queue.enqueue((int) (Math.random() * 10));
+            if (i >= input) {
+                queue.dequeue();
+            }
+        }
     }
 
     public static void useStack() {

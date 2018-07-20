@@ -20,7 +20,7 @@ public class Queue {
     }
 
     public void printQueue() {
-        System.out.println("Queue: ");
+//        System.out.println("Queue: ");
         System.out.println(Arrays.toString(array));
     }
 
