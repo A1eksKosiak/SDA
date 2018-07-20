@@ -1,21 +1,24 @@
-package week3.day1;
+package com.hackerrank;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MiniMaxSum {
 
     // Complete the miniMaxSum function below.
     static void miniMaxSum(int[] arr) {
-
         long minSum = 0;
         long maxSum = 0;
+        Arrays.sort(arr);
         for (int i = 0; i < arr.length; i++) {
-
+            if (i > 0) {
+                maxSum += arr[i];
+            }
+            if (i != arr.length - 1) {
+                minSum += arr[i];
+            }
         }
-
         System.out.println(minSum + " " + maxSum);
-
-
     }
 
     private static final Scanner scanner = new Scanner(System.in);
