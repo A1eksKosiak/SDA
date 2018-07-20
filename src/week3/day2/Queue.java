@@ -46,20 +46,8 @@ public class Queue {
         counter--;
         if (head == array.length) {
             head = 0;
+            return array[array.length-1];
         }
-        return array[head];
-    }
-
-    public static void main(String[] args) {
-        Queue queue = new Queue(5);
-        queue.enqueue(7);
-        queue.enqueue(5);
-        queue.enqueue(13);
-        queue.enqueue(45);
-        queue.enqueue(67);
-        queue.dequeue();
-        queue.enqueue(3);
-        queue.dequeue();
-        queue.enqueue(40);
+        return array[head - 1];
     }
 }

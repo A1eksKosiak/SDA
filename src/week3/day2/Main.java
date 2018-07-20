@@ -4,9 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-
         useQueue();
-
 //        useStack();
     }
 
@@ -16,12 +14,13 @@ public class Main {
         int input = scanner.nextInt();
 
         Queue queue = new Queue(input);
+        System.out.println("Initial array");
         queue.printQueue();
         for (int i = 0; i < input * 2 + 1; i++) {
-            queue.enqueue((int) (Math.random() * 10));
             if (i >= input) {
-                queue.dequeue();
+                System.out.println("Removing " + queue.dequeue());
             }
+            queue.enqueue((int) (Math.random() * 10));
         }
     }
 
