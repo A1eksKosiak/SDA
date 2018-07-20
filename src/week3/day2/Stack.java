@@ -1,13 +1,19 @@
 package week3.day2;
 
+import java.util.Arrays;
+
 public class Stack {
 
     private int top;
     private Character[] array;
 
     public Stack(int size) {
-        this.top = 0;
-        this.array = new Character[size];
+        top = 0;
+        array = new Character[size];
+    }
+
+    public void printStack() {
+        System.out.println(Arrays.toString(array));
     }
 
     public boolean push(Character element) {
