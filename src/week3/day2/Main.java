@@ -5,8 +5,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
+        useQueue();
 
 //        useStack();
+    }
+
+    public static void useQueue() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Input size of the array");
+        int input = scanner.nextInt();
+
+        Queue queue = new Queue(input);
+
+
     }
 
     public static void useStack() {
