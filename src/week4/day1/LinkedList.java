@@ -1,39 +1,118 @@
 package week4.day1;
 
 public class LinkedList {
+
+    Node first;
+
+    public void add(int value) {
+        if (first == null) {
+            first = new Node(value);
+        } else {
+            Node newNode = new Node(value);
+            newNode.next = first;
+            first = newNode;
+        }
+    }
+
+    public void delete(int value) {
+        Node temporaryLink = first;
+        Node previousLink = first;
+        while (temporaryLink.value != value) {
+            if (temporaryLink.next == null) {
+                break;
+            }
+            previousLink = temporaryLink;
+            temporaryLink = temporaryLink.next;
+        }
+        if (temporaryLink.value == value) {
+            if (temporaryLink == first) {
+                first = first.next;
+            } else {
+                previousLink.next = temporaryLink.next;
+            }
+        } else {
+            System.out.println("Not found");
+        }
+    }
+
+    public boolean search(int value) {
+        Node temporaryLink = first;
+        while (temporaryLink.value != value) {
+            if (temporaryLink.next == null) {
+                break;
+            }
+            temporaryLink = temporaryLink.next;
+        }
+        if (temporaryLink.value == value) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void print() {
+        Node temporaryLink = first;
+        while (temporaryLink != null) {
+            System.out.println(temporaryLink.value);
+            temporaryLink = temporaryLink.next;
+        }
+    }
+
     public static void main(String[] args) {
-        Node list = new Node(1);
-//        list = list.add(6);
-//        list = list.add(12);
-//        list = list.add(4);
-        list = list.add(0);
-        list = list.add(26);
-        list = list.add(17);
-        list.printWholeList();
-
-        int el = 26;
-//        boolean exist = list.search(el);
-//        System.out.println("Element " + el + " result: " + exist);
-
-        System.out.println("Deleting element: " + el);
-        list.next.delete(el, list, list.next.next);
-//        list.delete(el, list, list.next.next);
-        list.printWholeList();
+        LinkedList list = new LinkedList();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.print();
+        System.out.println(list.search(0));
+        list.delete(5);
+        list.print();
     }
 }
 
 class Node {
-    private int value;
+    int value;
     Node next;
 
     public Node(int value) {
         this.value = value;
         this.next = null;
     }
+}
 
-    public Node add(int value) {
-        //creates new Node
-        Node newFirstNode = new Node(value);
+class NodeTest {
+    private int value;
+    NodeTest next;
+
+//    public static void main(String[] args) {
+//        NodeTest list = new NodeTest(1);
+//        list = list.add(0);
+//        list = list.add(26);
+//        list = list.add(17);
+//        list.printWholeList();
+//
+//        int el = 17;
+////        boolean exist = list.search(el);
+////        System.out.println("Element " + el + " result: " + exist);
+//
+//        System.out.println("Deleting element: " + el);
+////        list.next.delete(el, list, list.next.next);
+////        list.delete(el, list, list.next.next);
+////        System.out.println("Deleting first element");
+////        list = list.deleteFirstElement();
+//        list.deleteAnyElement(el, list);
+//        list.printWholeList();
+//    }
+
+    public NodeTest(int value) {
+        this.value = value;
+        this.next = null;
+    }
+
+    public NodeTest add(int value) {
+        //creates new NodeTest
+        NodeTest newFirstNode = new NodeTest(value);
         //Link new node to current node
         newFirstNode.next = this;
         //returning new first node
@@ -49,11 +128,23 @@ class Node {
         return false;
     }
 
-    public void delete(int element, Node previous, Node nextNode) {
+    public NodeTest deleteFirstElement() {
+        return next;
+    }
+
+    static void deleteAnyElement(int element, NodeTest list) {
+        if (list.value == element) {
+            list = list.deleteFirstElement();
+            return;
+        }
+        list.next.delete(element, list);
+    }
+
+    public void delete(int element, NodeTest previous) {
         if (this.value == element) {
-            previous.next = nextNode;
+            previous.next = this.next;
         } else {
-            nextNode.delete(element,previous.next, nextNode.next);
+            this.next.delete(element, previous.next);
         }
     }
 
