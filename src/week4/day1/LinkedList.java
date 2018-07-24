@@ -37,17 +37,13 @@ public class LinkedList {
 
     public boolean search(int value) {
         Node temporaryLink = first;
-        while (temporaryLink.value != value) {
-            if (temporaryLink.next == null) {
-                break;
+        while (temporaryLink != null) {
+            if (temporaryLink.value == value) {
+                return true;
             }
             temporaryLink = temporaryLink.next;
         }
-        if (temporaryLink.value == value) {
-            return true;
-        } else {
-            return false;
-        }
+        return false;
     }
 
     public void print() {
@@ -65,8 +61,8 @@ public class LinkedList {
         list.add(3);
         list.add(4);
         list.print();
-        System.out.println(list.search(0));
-        list.delete(5);
+        System.out.println(list.search(5));
+        list.delete(4);
         list.print();
     }
 }
