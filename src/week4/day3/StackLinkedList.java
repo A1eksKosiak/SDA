@@ -44,7 +44,8 @@ class Stack {
 
     public void print() {
         if (first == null) {
-            System.out.println("Stack is empty");
+            System.out.println();
+            System.out.println("***Stack is empty***");
         }
         Node tempNode = first;
         while (tempNode != null) {

@@ -7,10 +7,19 @@ public class LinkedList {
     public void add(int value) {
         if (first == null) {
             first = new Node(value);
+            first.previous = first;
         } else {
             Node newNode = new Node(value);
+            first.previous = newNode;
             newNode.next = first;
             first = newNode;
+        }
+    }
+
+    public void deleteFirst() {
+        if (first != null) {
+            first = first.next;
+            first.previous = first.previous.previous;
         }
     }
 
@@ -51,7 +60,15 @@ public class LinkedList {
     public void print() {
         Node temporaryLink = first;
         while (temporaryLink != null) {
-            System.out.println(temporaryLink.value);
+            System.out.print("Current element is: " + temporaryLink.value);
+            if (temporaryLink.next != null) {
+                System.out.print("; previous: " + temporaryLink.next.value);
+            }
+            if (temporaryLink.previous != null) {
+                System.out.print("; next: " + temporaryLink.previous.value);
+            }
+            System.out.println();
+
             temporaryLink = temporaryLink.next;
         }
     }
@@ -60,17 +77,7 @@ public class LinkedList {
         LinkedList list = new LinkedList();
         list.add(1);
         list.add(2);
-        list.add(2);
-        list.add(2);
-        list.add(2);
-        list.add(2);
-        list.add(2);
         list.add(3);
-        list.add(4);
-        list.add(4);
-        list.add(4);
-        list.add(4);
-        list.add(4);
         list.add(4);
         list.print();
         System.out.println(list.search(5));
@@ -81,11 +88,13 @@ public class LinkedList {
 
 class Node {
     int value;
-    week4.day1.Node next;
+    Node next;
+    Node previous;
 
     public Node(int value) {
         this.value = value;
         this.next = null;
+        this.previous = null;
     }
 }
 
