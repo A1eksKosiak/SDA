@@ -24,7 +24,7 @@ public class StackLinkedList {
 }
 
 class Stack {
-    private Node first;
+    private NodeQueue first;
 
     public void pop() {
         if (first != null) {
@@ -34,11 +34,11 @@ class Stack {
 
     public void push(int value) {
         if (first == null) {
-            first = new Node(value);
+            first = new NodeQueue(value);
         } else {
-            Node newNode = new Node(value);
-            newNode.next = first;
-            first = newNode;
+            NodeQueue newNodeQueue = new NodeQueue(value);
+            newNodeQueue.next = first;
+            first = newNodeQueue;
         }
     }
 
@@ -47,17 +47,17 @@ class Stack {
             System.out.println();
             System.out.println("***Stack is empty***");
         }
-        Node tempNode = first;
-        while (tempNode != null) {
-            System.out.println(tempNode.value);
-            tempNode = tempNode.next;
+        NodeQueue tempNodeQueue = first;
+        while (tempNodeQueue != null) {
+            System.out.println(tempNodeQueue.value);
+            tempNodeQueue = tempNodeQueue.next;
         }
     }
 }
 
 class Node {
     int value;
-    Node next;
+    NodeQueue next;
 
     public Node(int value) {
         this.value = value;

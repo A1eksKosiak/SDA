@@ -16,6 +16,11 @@ public class LinkedList {
         }
     }
 
+    public void deleteElement(Node element) {
+        element = element.next;
+        element.previous = element.previous.previous;
+    }
+
     public void deleteFirst() {
         if (first != null) {
             first = first.next;
