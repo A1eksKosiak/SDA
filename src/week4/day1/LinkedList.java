@@ -27,8 +27,10 @@ public class LinkedList {
         if (temporaryLink.value == value) {
             if (temporaryLink == first) {
                 first = first.next;
+                delete(value);
             } else {
                 previousLink.next = temporaryLink.next;
+                delete(value);
             }
         } else {
             System.out.println("Not found");
@@ -58,18 +60,28 @@ public class LinkedList {
         LinkedList list = new LinkedList();
         list.add(1);
         list.add(2);
+        list.add(2);
+        list.add(2);
+        list.add(2);
+        list.add(2);
+        list.add(2);
         list.add(3);
+        list.add(4);
+        list.add(4);
+        list.add(4);
+        list.add(4);
+        list.add(4);
         list.add(4);
         list.print();
         System.out.println(list.search(5));
-        list.delete(4);
+        list.delete(2);
         list.print();
     }
 }
 
 class Node {
     int value;
-    Node next;
+    week4.day1.Node next;
 
     public Node(int value) {
         this.value = value;
