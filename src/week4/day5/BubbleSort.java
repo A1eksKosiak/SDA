@@ -16,7 +16,7 @@ public class BubbleSort {
         }
         //sorting
         int tempValue;
-        int count = 1;
+        int count = 0;
         for (int i = 0; i < size; i++) {
             for (int j = size-1; j >= i + 1; j--) {
                 count++;
