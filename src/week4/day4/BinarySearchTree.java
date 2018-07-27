@@ -1,7 +1,5 @@
 package week4.day4;
 
-import jdk.nashorn.internal.ir.WhileNode;
-
 public class BinarySearchTree {
     Node root;
 
@@ -32,7 +30,7 @@ public class BinarySearchTree {
     }
 
     public void search(int element) {
-        System.out.println(root.searchWithOutRecurtion(element));
+        System.out.println(root.searchWithOutRecursion(element));
     }
 
 }
@@ -48,7 +46,7 @@ class Node {
         this.right = null;
     }
 
-    public boolean searchWithOutRecurtion(int element) {
+    public boolean searchWithOutRecursion(int element) {
         if (value == element) {
             return true;
         }
