@@ -15,7 +15,6 @@ public class InsertionSortPart1 {
                 arr[i - 1] = tempElement;
             }
         }
-
         printArray(arr);
     }
 
