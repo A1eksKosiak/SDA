@@ -5,24 +5,34 @@ import java.util.Arrays;
 public class MergeSort {
     public static void main(String[] args) {
 
-        int[] array = new int[]{1, 6, 2, 3, 8, 13, -3, -60,100};
-
-        mergeSort(array);
-
+        Node[] nodes = new Node[]{
+                new Node(5),
+                new Node(3),
+                new Node(1),
+                new Node(2),
+                new Node(7),
+                new Node(6),
+                new Node(0),
+                new Node(-50),
+                new Node(15),
+                new Node(13),
+                new Node(47)
+        };
+        mergeSort(nodes);
         //printing
-        System.out.println(Arrays.toString(array));
-
+        System.out.println(Arrays.toString(nodes));
     }
 
-    static void mergeSort(int[] list) {
+    static void mergeSort(Node[] list) {
 
         if (list.length <= 1) {
             return;
         }
 
+
         //divide array into 2 smaller
-        int[] first = new int[list.length / 2];
-        int[] second = new int[list.length - first.length];
+        Node[] first = new Node[list.length / 2];
+        Node[] second = new Node[list.length - first.length];
 
         //copy data from array
         System.arraycopy(list, 0, first, 0, first.length);
@@ -35,14 +45,14 @@ public class MergeSort {
 
     }
 
-    static void merge(int[] first, int[] second, int[] result) {
+    static void merge(Node[] first, Node[] second, Node[] result) {
 
         int iFirst = 0;
         int iSecond = 0;
         int iMerged = 0;
 
         while (iFirst < first.length && iSecond < second.length) {
-            if (first[iFirst] < second[iSecond]) {
+            if (first[iFirst].value < second[iSecond].value) {
                 result[iMerged] = first[iFirst];
                 iFirst++;
             } else {
@@ -54,5 +64,18 @@ public class MergeSort {
         System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
 
+    }
+}
+
+class Node {
+    public int value;
+
+    public Node(int value) {
+        this.value = value;
+    }
+
+    @Override
+    public String toString() {
+        return " " + value;
     }
 }
