@@ -14,10 +14,10 @@ public class MergeSort {
 
     }
 
-    public static int[] mergeSort(int[] list) {
+    static void mergeSort(int[] list) {
 
         if (list.length <= 1) {
-            return list;
+            return;
         }
 
         //divide array into 2 smaller
@@ -33,10 +33,9 @@ public class MergeSort {
 
         merge(first, second, list);
 
-        return list;
     }
 
-    public static int[] merge(int[] first, int[] second, int[] result) {
+    static void merge(int[] first, int[] second, int[] result) {
 
         int iFirst = 0;
         int iSecond = 0;
@@ -55,6 +54,5 @@ public class MergeSort {
         System.arraycopy(first, iFirst, result, iMerged, first.length - iFirst);
         System.arraycopy(second, iSecond, result, iMerged, second.length - iSecond);
 
-        return result;
     }
 }
