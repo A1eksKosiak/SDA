@@ -6,7 +6,6 @@ public class GuessANumber {
     public static void main(String[] args) {
 
         int random = (int) (Math.random() * 10000);
-//        System.out.println("My number is " + random);
 
         Scanner scanner = new Scanner(System.in);
         for (int i = 0; i < 8; i++) {
@@ -21,5 +20,6 @@ public class GuessANumber {
                 System.out.println("No luck, your number " + number + " is greater, try again. You have " + (7 - i) + " attempts");
             }
         }
+        System.out.println("My number is " + random);
     }
 }
