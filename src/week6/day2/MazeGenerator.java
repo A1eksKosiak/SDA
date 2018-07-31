@@ -7,6 +7,12 @@ public class MazeGenerator {
 
     public static final char WALL = '#';
     public static final char PASSAGE = '.';
+    public static final int[][] DIRECTIONS = new int[][]{
+            {0, -1},
+            {1, 0},
+            {0, 1},
+            {-1, 0},
+    };
     private static int size = 25;
     private static char[][] mazeArray = new char[size][size];
 
@@ -27,12 +33,7 @@ public class MazeGenerator {
             return false;
         }
 
-        int[][] dirs = new int[][]{
-                {0, -1},
-                {1, 0},
-                {0, 1},
-                {-1, 0},
-        };
+        int[][] dirs = DIRECTIONS;
 
         int countPath = 0;
         for (int[] dir : dirs) {
@@ -57,12 +58,7 @@ public class MazeGenerator {
 
     public static char[][] generateMaze(int[] point) {
 
-        int[][] dirs = new int[][]{
-                {0, -1},
-                {1, 0},
-                {0, 1},
-                {-1, 0},
-        };
+        int[][] dirs = DIRECTIONS;
 
         Collections.shuffle(Arrays.asList(dirs));
 
