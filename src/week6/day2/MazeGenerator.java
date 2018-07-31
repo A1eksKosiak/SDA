@@ -23,7 +23,7 @@ public class MazeGenerator {
     }
 
     public static boolean isGoodPath(char[][] maze, int[] point) {
-        if (!(point[0] >= 0 && point[0] < size && point[1] >= 0 && point[1] < size)) {
+        if (!isPointInsideMaze(point)) {
             return false;
         }
 
@@ -37,7 +37,7 @@ public class MazeGenerator {
         int countPath = 0;
         for (int[] dir : dirs) {
             int[] newPoint = new int[]{(point[0] + dir[0]), (point[1] + dir[1])};
-            if ((newPoint[0] >= 0 && newPoint[0] < size && newPoint[1] >= 0 && newPoint[1] < size)
+            if (isPointInsideMaze(newPoint)
                     && (maze[newPoint[0]][newPoint[1]]) == PASSAGE) {
                 countPath++;
             }
@@ -49,6 +49,10 @@ public class MazeGenerator {
             return false;
         }
         return true;
+    }
+
+    private static boolean isPointInsideMaze(int[] point) {
+        return point[0] >= 0 && point[0] < size && point[1] >= 0 && point[1] < size;
     }
 
     public static char[][] generateMaze(int[] point) {
