@@ -42,9 +42,7 @@ public class MazeGenerator {
                     && (maze[newPoint[0]][newPoint[1]]) == PASSAGE) {
                 countPath++;
             }
-
         }
-
 
         if (countPath > 1) {
             return false;
@@ -71,7 +69,6 @@ public class MazeGenerator {
                 mazeArray[newPoint[0]][newPoint[1]] = PASSAGE;
                 generateMaze(newPoint);
             }
-
         }
 
         return mazeArray;
@@ -87,6 +84,4 @@ public class MazeGenerator {
             System.out.println();
         }
     }
-
-
 }
