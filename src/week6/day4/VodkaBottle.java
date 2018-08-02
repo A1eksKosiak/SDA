@@ -14,4 +14,9 @@ public class VodkaBottle extends ExplainingStatic.Bottle {
         return "VODKA!" + super.getName();
     }
 
+    @Override
+    public String toString() {
+        return "VodkaBottle " +
+                "alcoholPercentage = " + alcoholPercentage;
+    }
 }

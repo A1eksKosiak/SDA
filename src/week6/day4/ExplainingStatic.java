@@ -27,6 +27,9 @@ public class ExplainingStatic {
 
         System.out.println(input1CamelCased);
         System.out.println(input2CamelCased);
+
+        VodkaBottle nemiroff = new VodkaBottle("Nemiroff", 40);
+        System.out.println(nemiroff);
     }
 
     public static class Bottle {
