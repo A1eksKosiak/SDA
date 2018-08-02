@@ -42,7 +42,6 @@ public class ExplainingStatic {
 
         public Bottle(String name) {
             this.name = StringUtil.toCamelCase(name);
-            ;
             count++;
         }
 
