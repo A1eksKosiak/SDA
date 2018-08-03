@@ -1,6 +1,6 @@
 package week7.day1;
 
-public class EncapsulationExample {
+public class EncapsulationAndPolymorphismExample {
     public static void main(String[] args) {
 
         Person johnSmith = new Person("John Smith");
