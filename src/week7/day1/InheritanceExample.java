@@ -9,8 +9,10 @@ public class InheritanceExample {
         System.out.println(vehicle1.toString());
 
         Vehicle car1 = new Car("ABC123");
-        car1.setNumberOfSeats(10);             //will not set, as we Override setNumberOfSeats and returning 4
+//        car1.setNumberOfSeats(10);             //will not set, as we Override setNumberOfSeats and returning 4
         car1.setSpeedLimit(50);
+        ((Car) car1).setModel("BMW");
+        ((Car) car1).setEngineType("petrol");
         System.out.println(car1.toString());
 
     }
@@ -24,6 +26,7 @@ class Car extends Vehicle {
 
     public Car(String licencePlate) {
         super(licencePlate);
+        numberOfSeats = 4;          // to avoid setNumberOfSeats()
     }
 
     public String getModel() {
@@ -42,24 +45,24 @@ class Car extends Vehicle {
         this.engineType = engineType;
     }
 
-    @Override
-    public void setNumberOfSeats(int numberOfSeats) {
-        super.setNumberOfSeats(4);
-    }
+//    @Override
+//    public void setNumberOfSeats(int numberOfSeats) {
+//        super.setNumberOfSeats(4);
+//    }
 
     @Override
     public String toString() {
-        return "Car with licence plate #" + getLicencePlate() +
-                ", speed limit of " + getSpeedLimit() +
-                " mph, & " + getNumberOfSeats() + " seats";
+        return "Car " + model + ", engine type " + engineType + ", with licence plate #" + licencePlate +
+                ", speed limit of " + speedLimit +
+                " mph, & " + numberOfSeats + " seats.";
     }
 }
 
 class Vehicle {
 
-    private int speedLimit;
-    private int numberOfSeats;
-    private String licencePlate;
+    protected int speedLimit;
+    protected int numberOfSeats;
+    protected String licencePlate;
 
     public Vehicle(String licencePlate) {
         this.licencePlate = licencePlate;
