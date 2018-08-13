@@ -39,7 +39,6 @@ class Node<T> {
     T element;
     Node next;
 
-
     public Node(T element) {
         this.element = element;
     }
