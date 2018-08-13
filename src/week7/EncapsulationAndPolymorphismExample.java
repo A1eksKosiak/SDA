@@ -1,4 +1,4 @@
-package week7.day1;
+package week7;
 
 public class EncapsulationAndPolymorphismExample {
     public static void main(String[] args) {

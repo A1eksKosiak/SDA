@@ -1,4 +1,4 @@
-package week7.linkedlists;
+package week8.day1.linkedlists;
 
 public class Main {
     public static void main(String[] args) {
