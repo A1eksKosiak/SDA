@@ -35,7 +35,7 @@ public class GenericStack<K, V extends Number> {
         stack.print();
     }
 
-    private void pop() {
+    public void pop() {
         if (top > 0) {
             top--;
         }
