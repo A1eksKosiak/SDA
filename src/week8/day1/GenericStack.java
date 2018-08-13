@@ -11,8 +11,10 @@ public class GenericStack<K, V extends Number> {
     }
 
     public void push(K key, V value) {
-        array[top] = new NodeStack(key, value);
-        top++;
+        if (top < array.length) {
+            array[top] = new NodeStack(key, value);
+            top++;
+        }
     }
 
     public void print() {
@@ -34,6 +36,9 @@ public class GenericStack<K, V extends Number> {
     }
 
     private void pop() {
+        if (top > 0) {
+            top--;
+        }
     }
 
 }
