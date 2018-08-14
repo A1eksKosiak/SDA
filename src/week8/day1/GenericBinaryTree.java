@@ -23,9 +23,7 @@ public class GenericBinaryTree<T extends Number> {
         binaryTree.add(new Integer("0"));
         binaryTree.add(new Integer("14"));
         binaryTree.print();
-
     }
-
 }
 
 class NodeBinaryTree<T extends Number> {
@@ -52,8 +50,6 @@ class NodeBinaryTree<T extends Number> {
                 left = new NodeBinaryTree<>(element);
             }
         }
-
-
     }
 
     public void print() {
