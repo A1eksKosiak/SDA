@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
 
-public class StringToSet {
+public class SetImplementation {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String input = scanner.next();
