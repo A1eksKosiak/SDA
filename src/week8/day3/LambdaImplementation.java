@@ -9,10 +9,11 @@ public class LambdaImplementation {
         runItSafe(LambdaImplementation::divide4By, 2);
 
         runItSafeTwoArguments(LambdaImplementation::divide, 2, 10);
+        //Lambda implementation
         runItSafeTwoArguments((arg1, arg2) -> {
             int ans = arg1 / arg2;
             System.out.println(ans);
-        }, 2, 10);  //Lambda implementation
+        }, 2, 10);
         runItSafeTwoArguments((arg1, arg2) -> System.out.println(arg1 / arg2), 10, 5);  //Lambda implementation
 
     }
