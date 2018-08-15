@@ -30,7 +30,12 @@ public class LambdaImplementation {
         }));
 
         //Function takes value and returns value
-        System.out.println(runItSafeFunction((element) -> 10 / element, 5));
+        System.out.println(runItSafeFunction((element) -> {
+                    int temp = 100 / element;
+                    System.out.println(temp);
+                    return temp;
+                }
+                , 10));
         //BiFunction takes 2 parameters and returns one value
         System.out.println(runItSafeBiFunction((element1, element2) -> element1 / element2, 50, 2));
 
