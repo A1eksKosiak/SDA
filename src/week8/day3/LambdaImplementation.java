@@ -2,6 +2,7 @@ package week8.day3;
 
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 public class LambdaImplementation {
     public static void main(String[] args) {
@@ -16,6 +17,21 @@ public class LambdaImplementation {
         }, 2, 10);
         runItSafeTwoArguments((arg1, arg2) -> System.out.println(arg1 / arg2), 10, 5);  //Lambda implementation
 
+//        int res = runItSafeReturnInteger(() -> {
+//            return 20 / 2;
+//        });
+//        System.out.println(res);
+        System.out.println(runItSafeReturnInteger(() -> 20 / 2));
+
+    }
+
+    public static Integer runItSafeReturnInteger(Supplier<Integer> func) {
+        try {
+            return func.get();
+        } catch (RuntimeException e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
     }
 
     public static void runItSafe(Consumer<Integer> func, Integer arg) {
