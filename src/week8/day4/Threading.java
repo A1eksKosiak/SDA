@@ -7,39 +7,37 @@ public class Threading {
         Chair chair = new Chair();
         TestThread guy1 = new TestThread(chair);
         TestThread guy2 = new TestThread(chair);
-        //None-daemon threads will not wait daemon thread for finishing the process (program)
+        TestThread guy3 = new TestThread(chair);
+        TestThread guy4 = new TestThread(chair);
         guy1.start();
         guy2.start();
+        guy3.start();
+        guy4.start();
+
     }
 }
 
 class Chair {
-    private int availableChair = 1;
+    private int availableChair = 3;
 
-    //synchronized opens access to only 1 thread at a time
-    synchronized void takeChair() {
+    synchronized public void takeChair() {
         if (availableChair > 0) {
-            System.out.println("Taking this chair by " + Thread.currentThread().getName());
+            System.out.println("Taking chair by " + Thread.currentThread().getName());
             availableChair--;
-            System.out.println("Current available chairs - " + availableChair);
+            System.out.println("Available chair - " + availableChair);
         } else {
-            System.out.println("Chair is not available :(");
+            System.out.println("No chairs available");
         }
+
     }
+
 }
 
 class TestThread extends Thread {
-
     private Chair chair;
 
     public TestThread(Chair chair) {
-//        try {
-//            Thread.sleep(1000);
-//        } catch (InterruptedException e) {
-//            e.getMessage();
-//        }
         this.chair = chair;
-
     }
 
     @Override
