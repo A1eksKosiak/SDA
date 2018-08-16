@@ -4,16 +4,19 @@ public class Threading {
 
     public static void main(String[] args) {
 
-        Chair chair = new Chair();
-        TestThread guy1 = new TestThread(chair);
-        TestThread guy2 = new TestThread(chair);
-        TestThread guy3 = new TestThread(chair);
-        TestThread guy4 = new TestThread(chair);
-        guy1.start();
-        guy2.start();
-        guy3.start();
-        guy4.start();
-        System.out.println(guy1);
+        new Thread(new TestThreadSecond()).start();
+        for (int i = 0; i < 10; i++) {
+            System.out.println("From Main: " + i);
+        }
+    }
+}
+
+class TestThreadSecond implements Runnable {
+    @Override
+    public void run() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("From Runnable: " + i);
+        }
     }
 }
 
@@ -28,9 +31,7 @@ class Chair {
         } else {
             System.out.println("No chairs available for " + Thread.currentThread().getName());
         }
-
     }
-
 }
 
 class TestThread extends Thread {
