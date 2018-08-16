@@ -2,7 +2,7 @@ package week8.day4;
 
 public class Threading {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Chair chair = new Chair();
 
@@ -31,13 +31,9 @@ public class Threading {
 //            System.out.println("Result is " + chair.getAvailableChair());
 //        }
 
-        try{
-            //join all threads to wait for next code execution
-            thread1.join();
-            thread2.join();
-        }catch (InterruptedException e){
-            e.printStackTrace();
-        }
+        //join all threads to wait for next code execution
+        thread1.join();
+        thread2.join();
         System.out.println("Result is " + chair.getAvailableChair());
     }
 }
