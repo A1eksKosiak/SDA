@@ -4,16 +4,41 @@ public class Threading {
 
     public static void main(String[] args) {
 
-        new Thread(new TestThreadSecond()).start();
-        new Thread(() -> {
-            for (int i = 0; i < 10; i++) {
-                System.out.println("From Lambda Thread: " + i);
-            }
-        }).start();
+        Chair chair = new Chair();
 
-        for (int i = 0; i < 10; i++) {
-            System.out.println("From Main: " + i);
+        Thread thread1 = new Thread(() -> {
+            chair.minus();
+            try {
+                Thread.sleep(600);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            chair.minus();
+        });
+        thread1.start();
+        Thread thread2 = new Thread(() -> {
+            chair.minus();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            chair.minus();
+        });
+        thread2.start();
+
+//        while (thread1.isAlive() || thread2.isAlive()) {
+//            System.out.println("Result is " + chair.getAvailableChair());
+//        }
+
+        try{
+            //join all threads to wait for next code execution
+            thread1.join();
+            thread2.join();
+        }catch (InterruptedException e){
+            e.printStackTrace();
         }
+        System.out.println("Result is " + chair.getAvailableChair());
     }
 }
 
@@ -29,6 +54,10 @@ class TestThreadSecond implements Runnable {
 class Chair {
     private int availableChair = 2;
 
+    public int getAvailableChair() {
+        return availableChair;
+    }
+
     synchronized public void takeChair() {
         if (availableChair > 0) {
             System.out.println("Taking chair by " + Thread.currentThread().getName());
@@ -37,6 +66,10 @@ class Chair {
         } else {
             System.out.println("No chairs available for " + Thread.currentThread().getName());
         }
+    }
+
+    public void minus() {
+        availableChair--;
     }
 }
 
