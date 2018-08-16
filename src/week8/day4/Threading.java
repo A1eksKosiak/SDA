@@ -13,12 +13,11 @@ public class Threading {
         guy2.start();
         guy3.start();
         guy4.start();
-
     }
 }
 
 class Chair {
-    private int availableChair = 3;
+    private int availableChair = 2;
 
     synchronized public void takeChair() {
         if (availableChair > 0) {
@@ -26,7 +25,7 @@ class Chair {
             availableChair--;
             System.out.println("Available chair - " + availableChair);
         } else {
-            System.out.println("No chairs available");
+            System.out.println("No chairs available for " + Thread.currentThread().getName());
         }
 
     }
