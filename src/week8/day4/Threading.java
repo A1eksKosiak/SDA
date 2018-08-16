@@ -4,11 +4,13 @@ public class Threading {
 
     public static void main(String[] args) {
 
+        new Thread(new TestThreadSecond()).start();
         new Thread(() -> {
             for (int i = 0; i < 10; i++) {
                 System.out.println("From Lambda Thread: " + i);
             }
         }).start();
+
         for (int i = 0; i < 10; i++) {
             System.out.println("From Main: " + i);
         }
