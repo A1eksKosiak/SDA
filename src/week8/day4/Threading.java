@@ -13,6 +13,7 @@ public class Threading {
         guy2.start();
         guy3.start();
         guy4.start();
+        System.out.println(guy1);
     }
 }
 
