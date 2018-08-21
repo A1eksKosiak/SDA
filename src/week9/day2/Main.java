@@ -1,18 +1,23 @@
 package week9.day2;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws IOException {
 
-        Path filePath = Paths.get("C:\\Users\\A1eks\\IdeaProjects\\SDA\\src\\week9\\day2\\test.txt");
+        File filePath = new File("C:\\Users\\A1eks\\IdeaProjects\\SDA\\src\\week9\\day2\\test.txt");
+        if (!filePath.exists()) {
+            filePath.createNewFile();
+        }
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
 
-        List<String> lines = Files.readAllLines(filePath);
+        List<String> lines = new ArrayList<>();
+        String fileLine;
+        while ((fileLine = bufferedReader.readLine()) != null) {
+            lines.add(fileLine);
+        }
         List<User> userList = new ArrayList<>();
 
         for (String line : lines) {
@@ -36,13 +41,19 @@ public class Main {
         userList.add(new User("John", 54, 5000));
         userList.add(new User("Kara", 27, 1000000));
         userList.add(new User("Marie", 18, 50));
+        System.out.println(userList);
 
         //saving all users to the file
-        List<String> listOfUsers = new ArrayList<>();
-        for (User user: userList){
-            listOfUsers.add(user.getName() + " " + user.getAge() + " " + user.getMoney());
+        try {
+            BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
+            for (User user : userList) {
+                bufferedWriter.write(user.getName() + " " + user.getAge() + " " + user.getMoney() + "\n");
+            }
+            bufferedWriter.close();
+            System.out.println("Successful");
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
-        Files.write(filePath, listOfUsers);
 
     }
 
